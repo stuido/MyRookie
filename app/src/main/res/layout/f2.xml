@@ -3,11 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-   <include
-       layout="@layout/item_head"
-       android:id="@+id/f1_head"
-       >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:background="#cccccc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rm_rv"
 
-   </include>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+            </android.support.v7.widget.RecyclerView>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

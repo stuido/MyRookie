@@ -14,8 +14,6 @@
     android:layout_marginLeft="10dp"
     android:src="@mipmap/ss"
     />
-    android:src="@drawable/ss"/>
-    android:src="@drawable/ss"/>
 <EditText
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
