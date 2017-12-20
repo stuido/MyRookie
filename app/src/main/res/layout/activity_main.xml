@@ -5,10 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
-    <include layout="@layout/item_head"
-            android:id="@+id/z_head"></include>
     <com.hjm.bottomtabbar.BottomTabBar
-        android:layout_below="@+id/z_head"
         android:id="@+id/bottom_tab_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
