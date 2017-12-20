@@ -2,17 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="3dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <include layout="@layout/item_head"
-        android:id="@+id/z_head"
-        ></include>
+        android:id="@+id/z_head"></include>
     <com.stx.xhb.xbanner.XBanner
         android:layout_below="@+id/z_head"
         android:id="@+id/xbanner_banner"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         app:pointsPosition="CENTER"
-        app:AutoPlayTime="2000"
+        app:AutoPlayTime="1500"
+        android:layout_marginTop="3dp"
         app:pointsContainerBackground="#44aaaaaa"
         app:pointNormal="@drawable/shape_noraml"
         app:pointSelect="@drawable/shape_selected"

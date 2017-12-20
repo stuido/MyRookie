@@ -8,6 +8,7 @@ import com.lianxi.zy.myrookie.model.IFragOneModel;
 import com.lianxi.zy.myrookie.view.IFragOneView;
 
 import java.lang.ref.SoftReference;
+import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -28,23 +29,20 @@ public class FragOnePresenter  implements  IPresenter<IFragOneView>{
 
 
     public  void getData(){
-        model.getData(new Observer<XBannerBean>() {
+        model.getData(new Observer<List<XBannerBean>>() {
             @Override
             public void onSubscribe(Disposable d) {
 
             }
-
             @Override
-            public void onNext(XBannerBean  xBannerBean) {
-                Log.i("sss", "onNext: "+xBannerBean.getName());
-                softReference.get().setData(xBannerBean);
+            public void onNext(List<XBannerBean> xBannerBeans) {
+                Log.i("gss","onNext"+xBannerBeans.size());
+                softReference.get().setData(xBannerBeans);
             }
-
             @Override
             public void onError(Throwable e) {
-
+                Log.i("gss","onError"+e);
             }
-
             @Override
             public void onComplete() {
 
