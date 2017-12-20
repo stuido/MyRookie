@@ -51,5 +51,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+
+        Log.i("恩恩", "onCreate: "+"嗯");
+
+
+
+
+
+
     }
 }
