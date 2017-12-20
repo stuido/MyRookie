@@ -11,6 +11,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class FragOneModel implements  IFragOneModel{
+
     @Override
     public void getData(Observer observer) {
         RetrofitUtils.getApiService().getData("1")

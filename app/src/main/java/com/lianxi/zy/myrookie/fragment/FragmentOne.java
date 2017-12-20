@@ -2,6 +2,7 @@ package com.lianxi.zy.myrookie.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
      */
     @Override
     public void setData(XBannerBean xBannerBean) {
-
+        Log.i("Sss", "setData: "+xBannerBean.getName());
     }
 
     /**
