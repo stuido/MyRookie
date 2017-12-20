@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lianxi.zy.myrookie.R;
+
 /**
  * Created by jiajiajia on 2017/12/19.
  */
@@ -15,6 +17,8 @@ public class FragmentTwo extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view=View.inflate(getActivity(), R.layout.f2,null);
+
+        return view;
     }
 }
