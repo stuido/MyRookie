@@ -1,10 +1,12 @@
 package com.lianxi.zy.myrookie.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by 小傻瓜 on 2017/12/20.
  */
 
-public class ShouYeBean {
+public class ShouYeBean{
 
     /**
      * cpOne : {"id":17,"title":"手机专享","imgUrl":"http://7mno4h.com2.z0.glb.qiniucdn.com/555c6c90Ncb4fe515.jpg"}
@@ -90,22 +92,22 @@ public class ShouYeBean {
         this.campaignThree = campaignThree;
     }
 
-    public static class CpOneBean {
+    public static class CpOneBean{
         /**
          * id : 17
          * title : 手机专享
          * imgUrl : http://7mno4h.com2.z0.glb.qiniucdn.com/555c6c90Ncb4fe515.jpg
          */
 
-        private int id;
+        private Long id;
         private String title;
         private String imgUrl;
 
-        public int getId() {
+        public Long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(Long id) {
             this.id = id;
         }
 
@@ -126,22 +128,22 @@ public class ShouYeBean {
         }
     }
 
-    public static class CpTwoBean {
+    public static class CpTwoBean{
         /**
          * id : 15
          * title : 闪购
          * imgUrl : http://7mno4h.com2.z0.glb.qiniucdn.com/560a26d2N78974496.jpg
          */
 
-        private int id;
+        private Long id;
         private String title;
         private String imgUrl;
 
-        public int getId() {
+        public Long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(Long id) {
             this.id = id;
         }
 
@@ -162,22 +164,22 @@ public class ShouYeBean {
         }
     }
 
-    public static class CpThreeBean {
+    public static class CpThreeBean{
         /**
          * id : 11
          * title : 团购
          * imgUrl : http://7mno4h.com2.z0.glb.qiniucdn.com/560be0c3N9e77a22a.jpg
          */
 
-        private int id;
+        private Long id;
         private String title;
         private String imgUrl;
 
-        public int getId() {
+        public Long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(Long id) {
             this.id = id;
         }
 

@@ -2,6 +2,8 @@ package com.lianxi.zy.myrookie.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +12,13 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.lianxi.zy.myrookie.R;
+import com.lianxi.zy.myrookie.adapter.MyRecyclerViewAdapter;
 import com.lianxi.zy.myrookie.bean.ShouYeBean;
 import com.lianxi.zy.myrookie.bean.XBannerBean;
 import com.lianxi.zy.myrookie.presenter.FragOnePresenter;
 import com.lianxi.zy.myrookie.presenter.ShouPresenter;
 import com.lianxi.zy.myrookie.view.IFragOneView;
+import com.lianxi.zy.myrookie.view.IShouView;
 import com.stx.xhb.xbanner.XBanner;
 import com.stx.xhb.xbanner.transformers.Transformer;
 
@@ -26,7 +30,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFragOneView {
+public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFragOneView,IShouView{
     private View view;
     @BindView(R.id.xbanner_banner)
     XBanner xBanner;
@@ -34,6 +38,8 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
     private List<String> title;
     private Unbinder unbinder;
     private ShouPresenter shouPresenter;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
 
     @Nullable
     @Override
@@ -49,11 +55,11 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
         return view;
     }
     /**
-     * 回调轮播数据
+     * 获取xBanner的数据
      * @param xBannerBean
      */
     @Override
-    public void setData(final List<XBannerBean> xBannerBean) {
+    public void setData(List<XBannerBean> xBannerBean) {
         Log.i("Sss", "setData: "+xBannerBean.size());
         //XBanner
         setXbanner(xBannerBean);
@@ -65,6 +71,12 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
     @Override
     public void setShouData(List<ShouYeBean> shouYeBean) {
         Log.i("gss===","setShouData"+shouYeBean.size());
+
+        MyRecyclerViewAdapter myRecyclerViewAdapter=new MyRecyclerViewAdapter(getContext(),shouYeBean);
+        recyclerView.setAdapter(myRecyclerViewAdapter);
+
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
     }
     /**
      * xbanner轮播图
@@ -83,7 +95,7 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
         // 设置XBanner的页面切换特效
         //xBanner.setPoinstPosition(XBanner.BOTTOM);
         //xBanner.setPageTransformer(Transformer.ZoomCenter);
-// 设置XBanner的页面切换特效，选择一个即可，总的大概就这么多效果啦，欢迎使用
+        // 设置XBanner的页面切换特效，选择一个即可，总的大概就这么多效果啦，欢迎使用
         //xBanner.setPageTransformer(Transformer.Default);//横向移动
         //xBanner.setPageTransformer(Transformer.Alpha); //渐变，效果不明显
         xBanner.setPageTransformer(Transformer.Rotate);  //单页旋转
@@ -111,7 +123,7 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
      */
     @Override
     public void onCreatePresenter() {
-        shouPresenter = new ShouPresenter(this);
         mPresenter = new FragOnePresenter(this);
+        shouPresenter = new ShouPresenter(this);
     }
 }
