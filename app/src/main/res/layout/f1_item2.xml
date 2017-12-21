@@ -31,6 +31,8 @@
                     android:layout_width="match_parent"
                     fresco:placeholderImage="@mipmap/ic_launcher"
                     android:layout_height="90dp"/>
+
+
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/facebook_imgtwo"
                     android:layout_width="match_parent"
