@@ -1,6 +1,7 @@
 package com.lianxi.zy.myrookie.retrofit;
 
 
+import com.lianxi.zy.myrookie.bean.SellingBean;
 import com.lianxi.zy.myrookie.bean.ShouYeBean;
 import com.lianxi.zy.myrookie.bean.XBannerBean;
 
@@ -25,4 +26,7 @@ public interface ApiService {
   Observable<List<XBannerBean>> getData(@Query("type") String type);
   @GET("campaign/recommend")
   Observable<List<ShouYeBean>> getShouData();
+
+  @GET("wares/hot")
+  Observable<SellingBean> getSellingData(@Query("curPage") int curPage, @Query("pageSize") int pageSize);
 }

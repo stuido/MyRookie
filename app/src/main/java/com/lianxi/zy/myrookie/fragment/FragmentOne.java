@@ -48,16 +48,16 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
         shouPresenter.getDataShou();
         return view;
     }
-    /**
-     * 回调轮播数据
-     * @param xBannerBean
-     */
+
+
+
     @Override
-    public void setData(final List<XBannerBean> xBannerBean) {
+    public void setData(List<XBannerBean> xBannerBean) {
         Log.i("Sss", "setData: "+xBannerBean.size());
         //XBanner
         setXbanner(xBannerBean);
     }
+
     /**
      * 首页的展示
      * @param shouYeBean
