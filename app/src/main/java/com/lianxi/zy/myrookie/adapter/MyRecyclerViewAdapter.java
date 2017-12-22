@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
@@ -29,21 +30,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private  static int TYPEONE=0;
     private  static int TYPETWO=1;
     private LayoutInflater from;
-    private  OnCampaignClickListener mListener;
 
     public MyRecyclerViewAdapter(Context context, List<ShouYeBean> listShou) {
         this.context = context;
         this.listShou = listShou;
     }
-    /**
-     * 回调接口
-     * @param listener
-     */
-    public void setOnCampaignClickListener(OnCampaignClickListener listener){
-        this.mListener = listener;
-    }
     @Override
     public ViewHolderOne onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = View.inflate(context, R.layout.f1_item, null);
+        ViewHolderOne viewHolderOne = new ViewHolderOne(view);
         //判断类型
         from = LayoutInflater.from(parent.getContext());
         //当type==1时：
@@ -55,8 +50,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return new ViewHolderOne(from.inflate(R.layout.f1_item,parent,false));
     }
     @Override
-    public void onBindViewHolder(ViewHolderOne holder, int position) {
-//        ShouYeBean shouYeBean = listShou.get(position);
+    public void onBindViewHolder(final ViewHolderOne holder, final int position) {
         holder.tv_title.setText(listShou.get(position).getTitle());
         //一
         Uri uri =  Uri.parse(listShou.get(position).getCpOne().getImgUrl());
@@ -79,6 +73,30 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 .setAutoPlayAnimations(true)
                 .build();
         holder.facebook_imgtwo.setController(controller2);
+        holder.facebook_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator animator =  ObjectAnimator.ofFloat(v, "rotationX", 0.0F, 360.0F)
+                    .setDuration(200);
+                animator.start();
+            }
+        });
+        holder.facebook_imgone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator animator =  ObjectAnimator.ofFloat(v, "rotationX", 0.0F, 360.0F)
+                        .setDuration(200);
+                animator.start();
+            }
+        });
+        holder.facebook_imgtwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator animator =  ObjectAnimator.ofFloat(v, "rotationX", 0.0F, 360.0F)
+                        .setDuration(200);
+                animator.start();
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -110,62 +128,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             facebook_img=itemView.findViewById(R.id.facebook_img);
             facebook_imgone=itemView.findViewById(R.id.facebook_imgone);
             facebook_imgtwo=itemView.findViewById(R.id.facebook_imgtwo);
-//            facebook_img.setOnClickListener(this);
-//            facebook_imgone.setOnClickListener(this);
-//            facebook_imgtwo.setOnClickListener(this);
         }
-//        @Override
-//        public void onClick(View v) {
-//            if(mListener !=null){
-//                anim(v);
-//            }
-//        }
-//        private  void anim(final View v){
-//
-//            ObjectAnimator animator =  ObjectAnimator.ofFloat(v, "rotationX", 0.0F, 360.0F)
-//                    .setDuration(200);
-//            animator.addListener(new AnimatorListenerAdapter() {
-//                @Override
-//                public void onAnimationEnd(Animator animation) {
-//                    ShouYeBean shouYeBean = listShou.get(getLayoutPosition());
-//                    switch (v.getId()){
-//
-//                        case  R.id.facebook_img:
-//                            mListener.onClick(v,shouYeBean.getCpOne());
-//                            break;
-//
-//                        case  R.id.facebook_imgone:
-//                            mListener.onClick(v, shouYeBean.getCpTwo());
-//                            break;
-//                        case R.id.facebook_imgtwo:
-//                            mListener.onClick(v,shouYeBean.getCpThree());
-//                            break;
-//
-//                    }
-//
-//                }
-//            });
-//            animator.start();
-//        }
     }
-//    public class ViewHolderTwo extends RecyclerView.ViewHolder{
-//        @BindView(R.id.t_title)
-//        TextView t_title;
-//        @BindView(R.id.f_imgone)
-//        SimpleDraweeView f_imgone;
-//        @BindView(R.id.f_imgtwo)
-//        SimpleDraweeView f_imgtwo;
-//        @BindView(R.id.f_image)
-//        SimpleDraweeView f_image;
-//        public ViewHolderTwo(View itemView) {
-//            super(itemView);
-//            t_title=itemView.findViewById(R.id.t_title);
-//            f_imgone=itemView.findViewById(R.id.f_imgone);
-//            f_imgtwo=itemView.findViewById(R.id.f_imgtwo);
-//            f_image=itemView.findViewById(R.id.f_image);
-//        }
-//    }
-   public  interface OnCampaignClickListener{
-        void onClick(View view,Campaign campaign);
+    /**
+     * 回调接口
+     */
+    private OnItemCleck itemCleck =null;
+    public interface OnItemCleck{
+        void setItemCleck(View view,int position);
+    }
+    public void setOnItemCleckListener(OnItemCleck itemCleckListener){
+        itemCleck=itemCleckListener;
     }
 }

@@ -1,5 +1,9 @@
 package com.lianxi.zy.myrookie.fragment;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.lianxi.zy.myrookie.R;
@@ -40,7 +45,6 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
     private ShouPresenter shouPresenter;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,7 +73,7 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
      * @param shouYeBean
      */
     @Override
-    public void setShouData(List<ShouYeBean> shouYeBean) {
+    public void setShouData(final List<ShouYeBean> shouYeBean) {
         Log.i("gss===","setShouData"+shouYeBean.size());
 
         MyRecyclerViewAdapter myRecyclerViewAdapter=new MyRecyclerViewAdapter(getContext(),shouYeBean);
@@ -77,7 +81,37 @@ public class FragmentOne extends BaseFragment<FragOnePresenter> implements IFrag
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+//        myRecyclerViewAdapter.setOnItemCleckListener(new MyRecyclerViewAdapter.OnItemCleck() {
+//            @Override
+//            public void setItemCleck(View view, int position) {
+//                switch (view.getId()){
+//                    case R.id.facebook_img:
+//                        Toast.makeText(getActivity(), "点击事件1", Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.facebook_imgone:
+//                        Toast.makeText(getActivity(), "点击事件2", Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.facebook_imgtwo:
+//                        Toast.makeText(getActivity(), "点击事件3", Toast.LENGTH_SHORT).show();
+//                        break;
+//                }
+//            }
+//        });
     }
+//    private void anim(final View view) {
+//        ObjectAnimator animator =  ObjectAnimator.ofFloat(view, "rotationX", 0.0F, 360.0F)
+//                .setDuration(200);
+//        animator.addListener(new AnimatorListenerAdapter() {
+//            /**
+//             * {@inheritDoc}
+//             * @param animation
+//             */
+//            @Override
+//            public void onAnimationCancel(Animator animation) {
+//
+//            }
+//        });
+//    }
     /**
      * xbanner轮播图
      * @param
