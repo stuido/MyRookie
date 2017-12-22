@@ -1,5 +1,6 @@
 package com.lianxi.zy.myrookie.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lianxi.zy.myrookie.R;
+import com.lianxi.zy.myrookie.activity.SellingXiangQingActivity;
 import com.lianxi.zy.myrookie.adapter.MySellingAdapter;
 import com.lianxi.zy.myrookie.bean.SellingBean;
 import com.lianxi.zy.myrookie.presenter.FragTwoPresenter;
@@ -39,14 +41,28 @@ public class FragmentTwo extends BaseFragment<FragTwoPresenter> implements IFrag
     }
 
     @Override
-    public void setSellingData(SellingBean sellingBean) {
+    public void setSellingData(final SellingBean sellingBean) {
 
         Log.i("sss", "setSellingData: "+sellingBean.getList().size());
 
         rmRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         MySellingAdapter adapter=new MySellingAdapter(getActivity(),sellingBean);
         rmRv.setAdapter(adapter);
-
+        adapter.setOnItemClickListener(new MySellingAdapter.onItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                int price = (int) sellingBean.getList().get(position).getPrice();
+                int sale = sellingBean.getList().get(position).getSale();
+                String name = sellingBean.getList().get(position).getName();
+                String imgUrl = sellingBean.getList().get(position).getImgUrl();
+                Intent intent=new Intent(getActivity(), SellingXiangQingActivity.class);
+                intent.putExtra("price",price);
+                intent.putExtra("sale",sale);
+                intent.putExtra("name",name);
+                intent.putExtra("imgUrl",imgUrl);
+                startActivity(intent);
+            }
+        });
 
     }
 

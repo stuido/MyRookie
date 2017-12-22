@@ -1,9 +1,6 @@
 package com.lianxi.zy.myrookie.retrofit;
 
 
-import com.lianxi.zy.myrookie.bean.FenLeiFatherBean;
-import com.lianxi.zy.myrookie.bean.FenLeiSonBean;
-import com.lianxi.zy.myrookie.bean.HotDoorBean;
 import com.lianxi.zy.myrookie.bean.SellingBean;
 import com.lianxi.zy.myrookie.bean.ShouYeBean;
 import com.lianxi.zy.myrookie.bean.XBannerBean;
@@ -12,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -31,14 +30,6 @@ public interface ApiService {
     /**
      * http://112.124.22.238:8081/course_api/banner/query?type=1
      */
-    @GET("banner/query")
-    Observable<List<XBannerBean>> getData(@Query("type") String type);
-
-    @GET("campaign/recommend")
-    Observable<List<ShouYeBean>> getShouData();
-
-    @GET("wares/hot")
-    Observable<SellingBean> getSellingData(@Query("curPage") int curPage, @Query("pageSize") int pageSize);
 
 
     //http://112.124.22.238:8081/course_api/category/list //一级分类
@@ -53,6 +44,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("wares/list")
     Observable<FenLeiSonBean> getTwoFenlei(@FieldMap Map<String, String> map);
+
 
 
   /**

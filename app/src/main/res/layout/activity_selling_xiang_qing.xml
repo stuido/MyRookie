@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    tools:context="com.lianxi.zy.myrookie.activity.SellingXiangQingActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#ff3300"
+        android:gravity="center"
+        android:id="@+id/searchedit_header">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/fouth_head_fh"
+            android:background="@mipmap/ic_action_back"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:backgroundTint="#eee"
+            android:textColorHint="#eee"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="商品详情"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:id="@+id/fouth_head_gw"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="分享"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:id="@+id/fouth_head_bj"
+            android:layout_marginRight="15dp"/>
+    </LinearLayout>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/xq_img"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/searchedit_header"
+        android:scaleType="centerCrop"
+        fresco:placeholderImage="@mipmap/ic_launcher"
+        fresco:roundedCornerRadius="15dp" />
+
+    <TextView
+        android:id="@+id/xq_name"
+        android:background="#999999"
+        android:textColor="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/xq_img"
+        android:text="我就随便随便输出了这么一大串的句子 看它能显示到哪个地方,我就试试"
+        android:textSize="20sp" />
+    <LinearLayout
+        android:layout_below="@+id/xq_name"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/linearLayout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/xq_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text="￥5979"
+                android:textColor="#f00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ku"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/xq_price"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="120dp"
+                android:text="库存"
+                android:textColor="#999999" />
+
+            <TextView
+                android:id="@+id/ku_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/ku"
+                android:layout_below="@+id/ku"
+                android:text="23243" />
+
+            <TextView
+                android:id="@+id/zong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ku_num"
+                android:layout_marginStart="25dp"
+                android:layout_toEndOf="@+id/ku_num"
+                android:text="总销量"
+                android:textColor="#999999" />
+
+            <TextView
+                android:id="@+id/sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/zong"
+                android:layout_below="@+id/zong"
+                android:text="8654" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/join"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_alignEnd="@+id/play_now"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginEnd="116dp"
+        android:background="#33ffff"
+        android:gravity="center"
+        android:text="加入购物车"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/play_now"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginEnd="13dp"
+        android:background="#ff0000"
+        android:gravity="center"
+        android:text="立即购买"
+        android:textColor="#fff"
+        android:textSize="20sp" />
+
+</RelativeLayout>
