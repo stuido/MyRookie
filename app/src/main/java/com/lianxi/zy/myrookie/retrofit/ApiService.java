@@ -1,6 +1,8 @@
 package com.lianxi.zy.myrookie.retrofit;
 
 
+import com.lianxi.zy.myrookie.bean.FenLeiFatherBean;
+import com.lianxi.zy.myrookie.bean.FenLeiSonBean;
 import com.lianxi.zy.myrookie.bean.SellingBean;
 import com.lianxi.zy.myrookie.bean.ShouYeBean;
 import com.lianxi.zy.myrookie.bean.XBannerBean;
@@ -9,9 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -30,6 +29,16 @@ public interface ApiService {
     /**
      * http://112.124.22.238:8081/course_api/banner/query?type=1
      */
+    @GET("banner/query")
+    Observable<List<XBannerBean>> getData(@Query("type") String type);
+
+    //首页
+    @GET("campaign/recommend")
+    Observable<List<ShouYeBean>> getShouData();
+
+    //热卖
+    @GET("wares/hot")
+    Observable<SellingBean> getSellingData(@Query("curPage") int curPage, @Query("pageSize") int pageSize);
 
 
     //http://112.124.22.238:8081/course_api/category/list //一级分类
@@ -47,17 +56,6 @@ public interface ApiService {
 
 
 
-  /**
-   * http://112.124.22.238:8081/course_api/banner/query?type=1
-   * http://112.124.22.238:8081/course_api/campaign/recommend
-   *获取热门下的
-   * http://112.124.22.238:8081/course_api/wares/campaign/list?campaignId=1&orderBy=0&curPage=1&pageSize=10
-   */
-
-  @FormUrlEncoded
-  @POST("wares/campaign/list")
-  Observable<HotDoorBean> getData(@Field("start") String start,
-                                  @Field("count") String count);
 
 
 

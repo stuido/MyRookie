@@ -1,6 +1,7 @@
 package com.lianxi.zy.myrookie.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.lianxi.zy.myrookie.R;
+import com.lianxi.zy.myrookie.activity.SellingXiangQingActivity;
 import com.lianxi.zy.myrookie.adapter.Fenlei_Child_Adapter;
 import com.lianxi.zy.myrookie.bean.FenLeiSonBean;
 import com.lianxi.zy.myrookie.bean.XBannerBean;
@@ -77,7 +79,7 @@ public class Fenlei_Child_Fragment extends BaseFragment<Fenlei_Child_Presenter> 
      * @param fenLeiSonBean
      */
     @Override
-    public void setData(FenLeiSonBean fenLeiSonBean) {
+    public void setData(final FenLeiSonBean fenLeiSonBean) {
         list = fenLeiSonBean.getList();
         Log.i("", "setData:==== "+fenLeiSonBean.getList().size());
         Fenlei_Child_Adapter fenlei_child_adapter = new Fenlei_Child_Adapter(list,getContext());
@@ -85,6 +87,22 @@ public class Fenlei_Child_Fragment extends BaseFragment<Fenlei_Child_Presenter> 
         classifyRv.setLayoutManager(gridLayoutManager);
         classifyRv.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         classifyRv.setAdapter(fenlei_child_adapter);
+
+        fenlei_child_adapter.setOnItemClickListener(new Fenlei_Child_Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+                int price = (int) fenLeiSonBean.getList().get(position).getPrice();
+                int sale = fenLeiSonBean.getList().get(position).getSale();
+                String name = fenLeiSonBean.getList().get(position).getName();
+                String imgUrl = fenLeiSonBean.getList().get(position).getImgUrl();
+                Intent intent=new Intent(getActivity(), SellingXiangQingActivity.class);
+                intent.putExtra("price",price);
+                intent.putExtra("sale",sale);
+                intent.putExtra("name",name);
+                intent.putExtra("imgUrl",imgUrl);
+                startActivity(intent);
+            }
+        });
 
     }
 
