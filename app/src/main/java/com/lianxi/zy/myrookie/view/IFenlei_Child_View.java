@@ -1,14 +1,13 @@
 package com.lianxi.zy.myrookie.view;
 
-import com.lianxi.zy.myrookie.bean.ShouYeBean;
+import com.lianxi.zy.myrookie.bean.FenLeiSonBean;
 import com.lianxi.zy.myrookie.bean.XBannerBean;
 
 import java.util.List;
 
-/**
- * Created by ${zy} on 2017/12/20.
- */
+public interface IFenlei_Child_View {
 
-public interface IFragOneView {
+    void  setData(FenLeiSonBean fenLeiSonBean);
     void  setData(List<XBannerBean> xBannerBean);
+    int getIds();
 }
