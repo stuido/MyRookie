@@ -5,6 +5,7 @@ import android.util.Log;
 import com.lianxi.zy.myrookie.bean.ShouYeBean;
 import com.lianxi.zy.myrookie.model.ShouModel;
 import com.lianxi.zy.myrookie.view.IFragOneView;
+import com.lianxi.zy.myrookie.view.IShouView;
 
 import java.lang.ref.SoftReference;
 import java.util.List;
@@ -16,20 +17,20 @@ import io.reactivex.disposables.Disposable;
  * Created by 小傻瓜 on 2017/12/20.
  */
 
-public class ShouPresenter implements IPresenter<IFragOneView>{
+public class ShouPresenter implements IPresenter<IShouView>{
     private ShouModel shouModel;
-    SoftReference<IFragOneView> mSoftView;
-    public ShouPresenter(IFragOneView iFragOneView) {
+    SoftReference<IShouView> iShouView;
+    public ShouPresenter(IShouView iShouView) {
         this.shouModel =new ShouModel();
-        attech(iFragOneView);
+        attech(iShouView);
     }
     @Override
-    public void attech(IFragOneView view) {
-        mSoftView=new SoftReference<IFragOneView>(view);
+    public void attech(IShouView view) {
+        iShouView=new SoftReference<IShouView>(view);
     }
     @Override
     public void detech() {
-        mSoftView.clear();
+        iShouView.clear();
     }
 
 
@@ -42,11 +43,11 @@ public class ShouPresenter implements IPresenter<IFragOneView>{
             @Override
             public void onNext(List<ShouYeBean> shouYeBeans) {
                 Log.i("gss","onNext==="+shouYeBeans.size());
-                mSoftView.get().setShouData(shouYeBeans);
+                iShouView.get().setShouData(shouYeBeans);
             }
             @Override
             public void onError(Throwable e) {
-
+                Log.i("gss","onError==="+e);
             }
             @Override
             public void onComplete() {

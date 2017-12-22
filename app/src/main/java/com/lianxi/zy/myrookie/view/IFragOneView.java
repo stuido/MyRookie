@@ -11,5 +11,4 @@ import java.util.List;
 
 public interface IFragOneView {
     void  setData(List<XBannerBean> xBannerBean);
-    void setShouData(List<ShouYeBean> shouYeBean);
 }
