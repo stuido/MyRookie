@@ -18,15 +18,49 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-  public final  static   String BASE_URl = "http://112.124.22.238:8081/course_api/";
+    public final static String BASE_URl = "http://112.124.22.238:8081/course_api/";
+
+    /**
+     * http://112.124.22.238:8081/course_api/banner/query?type=1
+     */
+    @GET("banner/query")
+    Observable<List<XBannerBean>> getData(@Query("type") String type);
+
+    @GET("campaign/recommend")
+    Observable<List<ShouYeBean>> getShouData();
+
+    @GET("wares/hot")
+    Observable<SellingBean> getSellingData(@Query("curPage") int curPage, @Query("pageSize") int pageSize);
+
+
+    //http://112.124.22.238:8081/course_api/category/list //一级分类
+    @GET("category/list")
+    Observable<List<FenLeiFatherBean>> getFenleiData();
+
+    //fenlei 二级 http://112.124.22.238:8081/course_api/wares/list?categoryId=2&curPage=1&pageSize=10
+//  categoryId ? int ??Id
+//  curPage ? int ????
+//  pageSize ? int ????
+
+    @FormUrlEncoded
+    @POST("wares/list")
+    Observable<FenLeiSonBean> getTwoFenlei(@FieldMap Map<String, String> map);
+
+
+
   /**
    * http://112.124.22.238:8081/course_api/banner/query?type=1
+   * http://112.124.22.238:8081/course_api/campaign/recommend
+   *获取热门下的
+   * http://112.124.22.238:8081/course_api/wares/campaign/list?campaignId=1&orderBy=0&curPage=1&pageSize=10
    */
   @GET("banner/query")
   Observable<List<XBannerBean>> getData(@Query("type") String type);
   @GET("campaign/recommend")
   Observable<List<ShouYeBean>> getShouData();
-
   @GET("wares/hot")
   Observable<SellingBean> getSellingData(@Query("curPage") int curPage, @Query("pageSize") int pageSize);
+
+
+
 }

@@ -18,7 +18,14 @@
         android:layout_marginTop="3dp"
         app:pointsContainerBackground="#44aaaaaa"
         app:pointNormal="@drawable/shape_noraml"
-        app:pointSelect="@drawable/shape_selected"
-        >
+        app:pointSelect="@drawable/shape_selected">
     </com.stx.xhb.xbanner.XBanner>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/xbanner_banner"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:padding="3dp">
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>
