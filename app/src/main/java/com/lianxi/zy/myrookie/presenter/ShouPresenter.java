@@ -31,6 +31,8 @@ public class ShouPresenter implements IPresenter<IFragOneView>{
     public void detech() {
         mSoftView.clear();
     }
+
+
     public void getDataShou(){
         shouModel.getData(new Observer<List<ShouYeBean>>() {
             @Override
