@@ -35,7 +35,12 @@ public class Fenlei_Child_Adapter extends RecyclerView.Adapter<Fenlei_Child_Adap
     @Override
     public Fenlei_Child_ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(context, R.layout.fenlei_rv_item, null);
-
+         view.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 onItemClickListener.onItemClick((int) v.getTag(),v);
+             }
+         });
         return new Fenlei_Child_ViewHolder(view);
     }
 
@@ -51,6 +56,7 @@ public class Fenlei_Child_Adapter extends RecyclerView.Adapter<Fenlei_Child_Adap
                 .build();
         holder.rvItemImage.setController(controller);
         holder.rvItemImage.getBackground().setAlpha(40);
+        holder.itemView.setTag(position);
         //    holder.itemView.setTag(position);
 
     }
@@ -73,5 +79,13 @@ public class Fenlei_Child_Adapter extends RecyclerView.Adapter<Fenlei_Child_Adap
             ButterKnife.bind(this, itemView);
         }
     }
+    OnItemClickListener onItemClickListener;
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public  interface  OnItemClickListener{
+        void  onItemClick(int position, View view);
+    }
 }

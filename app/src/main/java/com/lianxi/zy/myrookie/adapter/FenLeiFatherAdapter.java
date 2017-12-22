@@ -72,4 +72,7 @@ public class FenLeiFatherAdapter extends BaseAdapter {
     class MyViewHodler {
         private TextView mTextParent;
     }
+
+
+
 }
