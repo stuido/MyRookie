@@ -1,5 +1,6 @@
 package com.lianxi.zy.myrookie.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,7 +12,11 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.lianxi.zy.myrookie.R;
+import com.lianxi.zy.myrookie.bean.EventPass;
 import com.lianxi.zy.myrookie.bean.SellingBean;
+import com.lianxi.zy.myrookie.dao.CartDao;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by jiajiajia on 2017/12/20.
@@ -20,10 +25,12 @@ import com.lianxi.zy.myrookie.bean.SellingBean;
 public class MySellingAdapter extends RecyclerView.Adapter<MySellingAdapter.MySellingViewHolder>{
     Context context;
     SellingBean bean;
+    CartDao dao;
 
     public MySellingAdapter(Context context, SellingBean bean) {
         this.context = context;
         this.bean = bean;
+        dao=new CartDao(context);
     }
 
     @Override
@@ -41,7 +48,7 @@ public class MySellingAdapter extends RecyclerView.Adapter<MySellingAdapter.MySe
     }
 
     @Override
-    public void onBindViewHolder(MySellingViewHolder holder, int position) {
+    public void onBindViewHolder(MySellingViewHolder holder, final int position) {
         holder.tv_describe.setText(bean.getList().get(position).getName());
         holder.tv_price.setText("￥"+bean.getList().get(position).getPrice());
         DraweeController controller = Fresco.newDraweeControllerBuilder()
@@ -52,7 +59,15 @@ public class MySellingAdapter extends RecyclerView.Adapter<MySellingAdapter.MySe
         holder.tv_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ContentValues values=new ContentValues();
+                values.put("img",bean.getList().get(position).getImgUrl());
+                values.put("title",bean.getList().get(position).getName());
+                values.put("price",bean.getList().get(position).getPrice());
+                dao.insert(values);
                 Toast.makeText(context,"我要加入购物车",Toast.LENGTH_SHORT).show();
+                EventPass pass=new EventPass();
+                pass.setChecked(true);
+                EventBus.getDefault().post(pass);
             }
         });
 
