@@ -53,6 +53,7 @@ public class FragmentThree extends BaseFragment<FragThreePresenter> implements I
 
     @Override
     public void setData(final List<FenLeiFatherBean> fenLeiFatherBeans) {
+
         Log.i("===", "setData: " + fenLeiFatherBeans.size());
         FenLeiFatherAdapter fenLeiFatherAdapter =new FenLeiFatherAdapter(fenLeiFatherBeans,getContext());
         fenleiListview.setSelector(R.color.cardview_dark_background);
