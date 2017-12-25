@@ -65,6 +65,7 @@ public class FragmentThree extends BaseFragment<FragThreePresenter> implements I
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //    fenlei_child_fragment.getId(fenLeiFatherBeans.get(position).getId());
                 addToStack("shouye",new Fenlei_Child_Fragment(fenLeiFatherBeans.get(position).getId()));
+
             }
         });
 
