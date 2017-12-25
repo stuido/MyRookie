@@ -6,14 +6,14 @@
    <com.stx.xhb.xbanner.XBanner
        android:id="@+id/classify_vp"
        android:layout_width="match_parent"
-       android:layout_height="200dp"></com.stx.xhb.xbanner.XBanner>
+       android:layout_height="@dimen/y300"></com.stx.xhb.xbanner.XBanner>
 
     <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/classify_vp"
         android:id="@+id/classify_rv"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
