@@ -55,6 +55,7 @@ public class FragmentThree extends BaseFragment<FragThreePresenter> implements I
     public void setData(final List<FenLeiFatherBean> fenLeiFatherBeans) {
         Log.i("===", "setData: " + fenLeiFatherBeans.size());
         FenLeiFatherAdapter fenLeiFatherAdapter =new FenLeiFatherAdapter(fenLeiFatherBeans,getContext());
+        fenleiListview.setSelector(R.color.cardview_dark_background);
         fenleiListview.setAdapter(fenLeiFatherAdapter);
       //  final Fenlei_Child_Fragment fenlei_child_fragment =new Fenlei_Child_Fragment(fenLeiFatherBeans.get(0).getId());
        //  fenlei_child_fragment.getId(fenLeiFatherBeans.get(0).getId());
@@ -64,6 +65,7 @@ public class FragmentThree extends BaseFragment<FragThreePresenter> implements I
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //    fenlei_child_fragment.getId(fenLeiFatherBeans.get(position).getId());
                 addToStack("shouye",new Fenlei_Child_Fragment(fenLeiFatherBeans.get(position).getId()));
+
             }
         });
 
