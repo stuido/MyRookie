@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,5 +88,11 @@ public class SellingXiangQingActivity extends AppCompatActivity {
                 Toast.makeText(this,"我要加入购物车",Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        overridePendingTransition(R.anim.inner_layout, R.anim.out_layout);
+        return super.onKeyDown(keyCode, event);
     }
 }

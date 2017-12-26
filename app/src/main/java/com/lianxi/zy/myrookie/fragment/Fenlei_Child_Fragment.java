@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -88,6 +91,13 @@ public class Fenlei_Child_Fragment extends BaseFragment<Fenlei_Child_Presenter> 
         classifyRv.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         classifyRv.setAdapter(fenlei_child_adapter);
 
+
+        Animation innertrans = AnimationUtils.loadAnimation(getContext(), R.anim.out_layout);
+        LayoutAnimationController animcont = new LayoutAnimationController(innertrans);
+        animcont.setOrder(LayoutAnimationController.ORDER_NORMAL);
+        animcont.setDelay(0.5f);
+        classifyRv.setLayoutAnimation(animcont);
+
         fenlei_child_adapter.setOnItemClickListener(new Fenlei_Child_Adapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View view) {
@@ -101,6 +111,7 @@ public class Fenlei_Child_Fragment extends BaseFragment<Fenlei_Child_Presenter> 
                 intent.putExtra("name",name);
                 intent.putExtra("imgUrl",imgUrl);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.inner_layout, R.anim.out_layout);
             }
         });
 

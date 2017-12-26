@@ -1,10 +1,10 @@
-
 package com.lianxi.zy.myrookie.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.hjm.bottomtabbar.BottomTabBar;
 import com.lianxi.zy.myrookie.R;
@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.bottom_tab_bar)
     BottomTabBar btb;
+    @BindView(R.id.text)
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,5 +52,22 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("TGA", "位置：" + position + "      选项卡：" + name);
                     }
                 });
+
+        btb.setOnTabChangeListener(new BottomTabBar.OnTabChangeListener() {
+            @Override
+            public void onTabChange(int position, String name) {
+                if(name.equals("主页")){
+                    text.setText("主页");
+                }else if(name.equals("热卖")){
+                    text.setText("热卖");
+                }else if(name.equals("分类")){
+                    text.setText("分类");
+                }else if(name.equals("购物车")){
+                    text.setText("购物车");
+                }else {
+                    text.setText("我的");
+                }
+            }
+        });
     }
 }
