@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y100"
+        android:layout_height="@dimen/y90"
         android:orientation="horizontal"
         android:background="#f00"
         android:gravity="center"
@@ -29,7 +29,7 @@
             android:textColorHint="#eee"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="购物车"
+            android:text="确认订单"
             android:textSize="25sp"
             android:textColor="#fff"
             android:id="@+id/fouth_head_gw"
@@ -37,20 +37,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="编辑"
+            android:text="          "
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="#fff"
             android:id="@+id/fouth_head_bj"
             android:layout_marginRight="15dp"/>
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fouth_recy"
+    <RelativeLayout
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y300"
         android:layout_below="@+id/searchedit_header"
+        >
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/address"
+        android:id="@+id/fouth_recy"
         android:layout_above="@+id/searchedit_foot"
         android:padding="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,13 +67,6 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:id="@+id/searchedit_foot">
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="全选"
-            android:textSize="20sp"
-            android:id="@+id/fouth_foot_ck"
-            android:layout_marginLeft="15dp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -84,17 +84,10 @@
             android:layout_width="@dimen/x250"
             android:layout_height="match_parent"
             android:background="#f00"
-            android:text="去结算"
+            android:text="确认订单"
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="#fff"
             android:id="@+id/fouth_foot_js"/>
-        <TextView
-            android:layout_width="@dimen/x100"
-            android:layout_height="match_parent"
-            android:background="#f00"
-            android:gravity="center"
-            android:textColor="#fff"
-            android:id="@+id/fouth_foot_count"/>
     </LinearLayout>
 </RelativeLayout>

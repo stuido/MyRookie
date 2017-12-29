@@ -25,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jiajiajia on 2017/12/22.
@@ -50,12 +51,7 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=View.inflate(context, R.layout.f4_car_item,null);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.OnClickListenre((Integer) v.getTag());
-            }
-        });
+
         return new ViewHolder(view);
     }
 
@@ -79,6 +75,7 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
                 }else{
                     CheckALLstate(false);
                 }
+                sendAllData();
                 notifyDataSetChanged();
             }
         });
@@ -141,10 +138,7 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
             ButterKnife.bind(this, itemView);
         }
     }
-    //回调jiek
-    public interface OnClick{
-        void OnClickListenre(int position);
-    }
+
     //删除的方法
     public void delete(){
         for (int i = 0; i < list.size(); i++) {
@@ -165,6 +159,7 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
             bean.setChecked(flag);
             Log.i("----全选-------", "changAllListCbState: "+flag);
         }
+        EventBus.getDefault().postSticky(list);
         EventPriceAndNum compute = compute();
         EventBus.getDefault().post(compute);
         notifyDataSetChanged();
@@ -202,5 +197,11 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
         priceAndNum.setPrice(price);
         return priceAndNum;
     }
+
+    //发送数据
+    public  void sendAllData(){
+        EventBus.getDefault().postSticky(list);
+    }
+
 }
 
