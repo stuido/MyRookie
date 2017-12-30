@@ -1,5 +1,6 @@
 package com.lianxi.zy.myrookie.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.lianxi.zy.myrookie.R;
+import com.lianxi.zy.myrookie.activity.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,5 +44,7 @@ public class FragmentFive extends Fragment {
     @OnClick(R.id.login)
     public void onViewClicked() {
         Toast.makeText(getContext(), "ttt", Toast.LENGTH_SHORT).show();
+        Intent in=new Intent(getActivity(), LoginActivity.class);
+        startActivity(in);
     }
 }

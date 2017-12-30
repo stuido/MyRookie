@@ -3,6 +3,7 @@ package com.lianxi.zy.myrookie.retrofit;
 
 import com.lianxi.zy.myrookie.bean.FenLeiFatherBean;
 import com.lianxi.zy.myrookie.bean.FenLeiSonBean;
+import com.lianxi.zy.myrookie.bean.LoginBean;
 import com.lianxi.zy.myrookie.bean.SellingBean;
 import com.lianxi.zy.myrookie.bean.ShouYeBean;
 import com.lianxi.zy.myrookie.bean.XBannerBean;
@@ -16,6 +17,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by ${张洋洋}
@@ -54,7 +56,9 @@ public interface ApiService {
     @POST("wares/list")
     Observable<FenLeiSonBean> getTwoFenlei(@FieldMap Map<String, String> map);
 
-
+    @FormUrlEncoded
+    @POST("auth/login")
+    Observable<LoginBean> getlogin(@FieldMap Map<String, String> map);
 
 
 
